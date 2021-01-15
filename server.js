@@ -1,5 +1,20 @@
-import config, { nodeEnv, logStars } from './config';
+import config from './config';
+import fs from 'fs';
+import apiRouter from './api';
 
-console.log(config, nodeEnv);
+import express from 'express';
+const server = express();
+server.set('view engine', 'ejs');
 
-logStars('Function');
+server.get('/', (req, res) => {
+    res.render('index',{
+        content:'Hello Express and <em>EJS</em>!'
+    });
+});
+
+server.use('/api', apiRouter);
+server.use(express.static('public'));
+
+server.listen(config.port, () => {
+    console.info('Express listening on port', config.port);
+});
