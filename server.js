@@ -1,6 +1,6 @@
 import config from './config';
-import fs from 'fs';
 import apiRouter from './api';
+import sass from 'node-sass';
 
 import express from 'express';
 const server = express();
