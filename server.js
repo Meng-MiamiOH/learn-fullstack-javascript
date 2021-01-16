@@ -1,9 +1,9 @@
 import config from './config';
 import apiRouter from './api';
-import sass from 'node-sass';
 
 import express from 'express';
 const server = express();
+
 server.set('view engine', 'ejs');
 
 server.get('/', (req, res) => {
