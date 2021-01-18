@@ -1,32 +1,21 @@
 import React from 'react';
 import Header from './Header';
-import axios from 'axios';
+
 import ContestPreview from './ContestPreview';
 
 
 class App extends React.Component {
-    state = {
-        pageHeader: 'Naming Contests',
-        contests : []
-    };
-    componentDidMount(){
-        // ajax ...
-        axios.get('/api/contests')
-        .then(resp=>{
-            this.setState({
-                contests: resp.data.contests
-            });
-        })
-        .catch(console.error);
+  state = {
+    pageHeader: 'Naming Contests',
+    contests: this.props.initialContests
+  };
+  componentDidMount() {
+  }
+  componentWillUnmount() {
+  }
 
-
-    }
-    componentWillUnmount(){
-
-    }
-
-    render() {
-        return (
+  render() {
+    return (
             <div className="App">
                 <Header message={this.state.pageHeader} />
                 <div>
@@ -35,8 +24,8 @@ class App extends React.Component {
                     )}
                 </div>
             </div>
-        );
-    }
+    );
+  }
 }
 
 export default App;
